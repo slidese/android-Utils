@@ -1,5 +1,8 @@
 <resources>
 
+    <!-- Statics strings -->
+    <string name="version">Version %s</string>
+    
     <!-- General strings -->
     <string name="app_name">Utils</string>
     <string name="ok">OK</string>
