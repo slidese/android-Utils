@@ -20,7 +20,7 @@ import se.slide.utils.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoBoringActionBarActivity extends Activity {
+public abstract class NoBoringActionBarActivity extends Activity {
 
     private static final String TAG = "NoBoringActionBarActivity";
     private int mActionBarTitleColor;
@@ -28,7 +28,7 @@ public class NoBoringActionBarActivity extends Activity {
     private int mHeaderHeight;
     private int mMinHeaderTranslation;
     private ListView mListView;
-    private KenBurnsView mHeaderPicture;
+    protected KenBurnsView mHeaderPicture;
     private ImageView mHeaderLogo;
     private View mHeader;
     private View mPlaceHolderView;
@@ -69,7 +69,7 @@ public class NoBoringActionBarActivity extends Activity {
         setupLogo(mHeaderLogo);
         
         // Lastly, set up the custom views
-        ImageView[] imageView = setupKenBurnsView();
+        ImageView[] imageView = setupKenBurnsView(mHeaderPicture);
         
         mHeaderPicture.setImageView(imageView);
         mHeaderPicture.setResourceIds(getDrawableResources());
@@ -212,16 +212,14 @@ public class NoBoringActionBarActivity extends Activity {
         return mActionBarHeight;
     }
     
+    protected abstract List<AboutLines> getAboutLines();
+    protected abstract ImageView[] setupKenBurnsView(KenBurnsView mHeaderPicture);
+    protected abstract int[] getDrawableResources();
+    protected abstract void setupLogo(ImageView logo);
+    
+    /*
     public List<AboutLines> getAboutLines() {
         ArrayList<AboutLines> FAKES = new ArrayList<AboutLines>();
-        /*
-        for (int i = 0; i < 1000; i++) {
-            AboutLines a = new AboutLines();
-            a.row1 = "entry" + i;
-            a.row2 = "Quam ob rem vita quidem talis fuit vel fortuna vel gloria, ut nihil posset accedere, moriendi autem sensum celeritas abstulit; quo de genere mortis difficile dictu est; quid homines suspicentur, videtis; hoc vere tamen licet dicere, P. Scipioni ex multis diebus, quos in vita celeberrimos laetissimosque viderit, illum diem clarissimum fuisse.";
-            FAKES.add(a);
-        }
-        */
         
         AboutLines a = new AboutLines();
         a.row1 = "Version";
@@ -277,11 +275,12 @@ public class NoBoringActionBarActivity extends Activity {
     }
     
     public int[] getDrawableResources() {
-        return new int[] { R.drawable.picture0, R.drawable.picture1 };
+        //return new int[] { R.drawable.picture0, R.drawable.picture1 };
+        return new int[] { R.drawable.black_wood, R.drawable.black_wood };
     }
     
     public void setupLogo(ImageView logo) {
         logo.setImageResource(R.drawable.ic_launcher_nodpi);
     }
-    
+    */
 }
